@@ -1,10 +1,7 @@
-
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content padding color="Orange">
+    <img src="assets/img/logo.png">
+    <button ion-button block icon-left class="loginButton" color="light" style="margin-top: 40px;" (click)="GoFb()">
+        <ion-icon ios="logo-facebook" md="logo-facebook" style="color: #3B5998;"></ion-icon> &nbsp;Login with Facebook</button>
+    <button ion-button block icon-left class="loginButton" color="light" style="margin-top: 12px;" (click)="GoGmail()">
+        <ion-icon ios="logo-googleplus" md="logo-googleplus" style="color: #DB4437"></ion-icon>&nbsp;Login with Google+</button>
 </ion-content>
