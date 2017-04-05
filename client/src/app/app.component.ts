@@ -30,7 +30,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(Page1);
+        this.nav.setRoot(MyProfileComponent);
       } else {
         this.nav.setRoot(LoginPage);
       }

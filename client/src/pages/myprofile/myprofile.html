@@ -1,10 +1,33 @@
 <ion-header>
-  <ion-navbar color="Orange">
-    <ion-title><img src="assets/img/logo.png"></ion-title>
-  </ion-navbar>
+    <ion-navbar color="Orange">
+        <ion-title><img src="assets/img/logo.png"></ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content>
-  <div class="circular">
-  </div>
-   <div class="circularCamButton"><ion-icon ios="ios-camera-outline" md="md-camera"></ion-icon></div>
+    <div class="circular">
+        <div class="circularCamButton">
+            <ion-icon ios="ios-camera-outline" md="md-camera"></ion-icon>
+        </div>
+        <img [src]="ProfileData.picture" class="img-circle">
+    </div>
+    <div style="margin-top: 10px;">
+        <md-input-container>
+            <input mdInput placeholder="Username" value="{{ProfileData.username}}">
+        </md-input-container> 
+         <md-input-container>
+            <input mdInput placeholder="Location" value="{{ProfileData.location}}">
+        </md-input-container>
+         <md-input-container>
+            <input mdInput placeholder="Interest" value="{{ProfileData.interest}}">
+        </md-input-container>
+         <md-input-container>
+            <input mdInput placeholder="Company" value="{{ProfileData.company}}">
+        </md-input-container>   
+           <md-input-container>
+            <input mdInput placeholder="Event" value="{{ProfileData.event}}">
+        </md-input-container>
+
+        <button ion-button block>Save & Go</button>
+    </div>
+    <!--  {{ProfileData.username}} -->
 </ion-content>

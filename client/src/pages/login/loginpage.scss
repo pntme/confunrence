@@ -1,23 +1,23 @@
-login-page {}
-
-ion-content {
-    background-color: #FB7A52 !important;
+login-page ion-content{
+	  background-color: #FB7A52 !important;
 }
 
-ion-content img {
+
+
+login-page ion-content img {
     width: 232px;
     margin: 0 auto;
     display: block;
     margin-top: 138px;
 }
 
-.loginButton {
+ login-page .loginButton {
     width: 271px;
     margin: 0 auto;
   
   
 }
 
-button{
+login-page button{
 	text-transform: none !important;
 }

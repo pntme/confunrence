@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { App, ViewController, MenuController } from 'ionic-angular';
 import { FacebookAuth, GoogleAuth, User } from '@ionic/cloud-angular';
+import { MyProfileComponent } from '../myprofile/myprofile.component';
 
 
 @Component({
@@ -9,27 +10,37 @@ import { FacebookAuth, GoogleAuth, User } from '@ionic/cloud-angular';
 })
 export class LoginPage {
 
-  constructor(public facebookAuth: FacebookAuth, public navCtrl: NavController, public googleAuth: GoogleAuth, public user: User) {
-    
+  constructor(public facebookAuth: FacebookAuth,
+
+    public googleAuth: GoogleAuth,
+    public user: User,
+    public menu: MenuController,
+    public viewCtrl: ViewController,
+    public appCtrl: App
+  ) {
+    this.menu.swipeEnable(false);
+
   }
 
 
- GoFb(){
- 	this.facebookAuth.login().then((res)=>{
-       console.log(res)
- 	}, (e)=>{
- 		console.log(e)
- 	});
- 	console.log('want to login with fb');
- }
- 
- GoGmail(){
- 	console.log('want to login with gmail');		
- 	this.googleAuth.login().then((res)=> {
- 		console.log(res)
- 	}, (e)=>{
- 		console.log(e);
- 	});																																																																																																																									
- }
+  GoFb() {
+    this.facebookAuth.login().then((res) => {
+      console.log(res)
+      this.appCtrl.getRootNav().push(MyProfileComponent);
+    }, (e) => {
+      console.log(e)
+    });
+    console.log('want to login with fb');
+  }
+
+  GoGmail() {
+    console.log('want to login with gmail');
+    this.googleAuth.login().then((res) => {
+      console.log(res)
+      this.appCtrl.getRootNav().push(MyProfileComponent);
+    }, (e) => {
+      console.log(e);
+    });
+  }
 
 }

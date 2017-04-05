@@ -6,6 +6,11 @@ import { Page1 } from '../pages/page1/page1';
 import { MyProfileComponent } from '../pages/myprofile/myprofile.component';
 import { Page2 } from '../pages/page2/page2';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { MaterialModule } from '@angular/material';
+import { Geolocation } from '@ionic-native/geolocation';
+import 'hammerjs';
+
+
 
 
 const cloudSettings: CloudSettings = {
@@ -33,7 +38,8 @@ const cloudSettings: CloudSettings = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings)
+    CloudModule.forRoot(cloudSettings),
+    MaterialModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,6 +49,6 @@ const cloudSettings: CloudSettings = {
     Page2,
     MyProfileComponent
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation]
 })
 export class AppModule { }
