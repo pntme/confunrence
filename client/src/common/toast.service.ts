@@ -1,10 +1,24 @@
 import { Injectable } from '@angular/core';
+import { ToastController } from 'ionic-angular';
+
 
 @Injectable()
 export class toast {
-  notify(msg, duration, postion, state) {
-    return 'hello';
-  }
+  constructor(public toastCtrl: ToastController) { }
+  notify(msg, duration, postion, closebutton, closebuttontext) {
+  	console.log('kkkkkkkk')
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: duration,
+      position: postion,
+      showCloseButton: closebutton,
+      closeButtonText: closebuttontext
+    });
 
-  constructor() { }
+    toast.onDidDismiss(() => {
+      console.log("Toast buton clicked");
+    });
+
+     toast.present();
+  }
 }

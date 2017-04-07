@@ -14,7 +14,7 @@ import { toast } from '../common/toast.service';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = MyProfileComponent;
+  rootPage: any = LoginPage;
   pages: Array<{ title: string, component: any }>;
   constructor(public platform: Platform, public appCtrl: App, public _toast: toast) {
     this.initializeApp();
@@ -40,7 +40,7 @@ export class MyApp {
       this.platform.registerBackButtonAction(() => {
         if (count === 0) {
           count++;
-          this._toast.notify('Press back again to exit', 3000, 'bottom', false);
+          this._toast.notify('Press back again to exit', 3000, 'bottom', true, '');
           setTimeout(() => {
             count = 0;
           }, 3000);

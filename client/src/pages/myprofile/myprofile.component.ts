@@ -14,12 +14,17 @@ export class MyProfileComponent {
 
   }
   ionViewWillEnter() {
-    console.log(this.myLocation.Get())
-    // this.myLocation.Get().subscribe(data =>{
-    //     console.log(data)
-    // });
-
-
+    this.myLocation.CheckForGps().subscribe(data => {
+      if (data === false) {
+        console.log("GPS is off");
+      } else if (data === true) {
+        this.myLocation.Get().subscribe(data => {
+          console.log(data)
+        }, err => {
+          console.log(err)
+        });
+      }
+    })
     let UserData: string = localStorage.getItem("ionic_user_5ad47bc5");
     // if(localStorage.getItem('LoginType') === 'fb'){
     this.ProfileData = {

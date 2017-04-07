@@ -8,6 +8,8 @@ import { Page2 } from '../pages/page2/page2';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { MaterialModule } from '@angular/material';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Diagnostic } from '@ionic-native/diagnostic';
+
 import 'hammerjs';
 
 
@@ -49,6 +51,6 @@ const cloudSettings: CloudSettings = {
     Page2,
     MyProfileComponent
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, Diagnostic]
 })
 export class AppModule { }

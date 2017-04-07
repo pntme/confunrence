@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "2.4.8",
     "@angular/platform-server": "2.4.8",
     "@ionic-native/core": "^3.4.4",
+    "@ionic-native/diagnostic": "^3.4.4",
     "@ionic-native/geolocation": "^3.4.4",
     "@ionic-native/google-maps": "^3.4.4",
     "@ionic-native/toast": "^3.4.2",
