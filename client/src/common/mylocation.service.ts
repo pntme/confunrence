@@ -40,18 +40,22 @@ export class MyLocation {
 
 
   CheckForGps() {
+    console.log('called')
     return Observable.create(observer => {
       this.diagnostic.isLocationAvailable().then((res) => {
-                console.log('diagnostic result', res);
-                if (res === false)
-                   this._toast.notify('Open setting to turn on the GPS', 3000, 'bottom', true, 'Open');
-                if (res === true)
-                  console.log("GPS is on try to get location");
-              }, (err) => {
-                console.log("unexpected error", err)
-              });
+        if (res === false)
+          this._toast.notify('Unable to fetech location, Open setting to turn on GPS', false, 'bottom', true, 'Open');
+        if (res === true) {
+          this.Get().subscribe(data => {
+            observer.next(data);
+          }, error => {
+            this._toast.notify(error, 3000, 'bottom', false, '');
+          });
+        }
+      }, err => {
+         this._toast.notify(err, 3000, 'bottom', false, '');
+      });
     });
-
   }
 }
 

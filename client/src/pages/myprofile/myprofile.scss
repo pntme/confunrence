@@ -55,9 +55,15 @@ md-input-container {
     margin-top: 30px;
 }
 
-.button-md {
+my-profile  .button-md {
     display: block !important;
     margin: 0 auto !important;
     width: 264px !important;
     margin-top: 33px !important;
+}
+.toast-md .toast-message {
+    padding: 19px 16px 17px;
+    font-size: 10px !important;
+    color: #fff;
+    text-align: left;
 }
