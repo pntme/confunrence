@@ -16,7 +16,6 @@ export class MyProfileComponent {
 
   }
   ionViewWillEnter() {
-    //tst
     this.subscription = this.myLocation.CheckForGps().subscribe(data => {
       console.log(data)
       if (data === false) {
