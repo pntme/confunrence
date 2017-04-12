@@ -7,6 +7,7 @@ import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { toast } from '../common/toast.service';
 import { HomeComponent } from '../pages/home/home.component';
+import { InvitationsComponent } from '../pages/invitations/invitations.component';
 
 
 
@@ -32,7 +33,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(HomeComponent);
+        this.nav.setRoot(InvitationsComponent);
       } else {
         this.nav.setRoot(LoginPage);
       }
