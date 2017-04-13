@@ -10,7 +10,7 @@ import { MyLocation } from '../../common/mylocation.service';
   providers: [MyLocation]
 })
 export class InvitationsComponent {
- 
+
   constructor(public navCtrl: NavController, public myLocation: MyLocation) {
 
   }

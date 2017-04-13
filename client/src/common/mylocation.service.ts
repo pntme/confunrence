@@ -53,7 +53,7 @@ export class MyLocation {
           });
         }
       }, err => {
-         this._toast.notify(err, 3000, 'bottom', false, '');
+        this._toast.notify(err, 3000, 'bottom', false, '');
       });
     });
   }
