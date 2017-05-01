@@ -9,9 +9,10 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { MaterialModule } from '@angular/material';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { HomeComponent } from '../pages/home/home.component';
 import { ExceptionService } from '../common/exception.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+  
 
 
 
@@ -41,7 +42,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     Page1,
     Page2,
-    MyProfileComponent
+    MyProfileComponent,
+    HomeComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
