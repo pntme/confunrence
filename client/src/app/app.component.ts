@@ -16,7 +16,7 @@ import { HomeComponent } from '../pages/home/home.component';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = HomeComponent;
+  rootPage: any = MyProfileComponent;
   pages: Array<{ title: string, component: any }>;
   constructor(public platform: Platform, public appCtrl: App, public _toast: toast) {
     this.initializeApp();
@@ -24,7 +24,9 @@ export class MyApp {
 
     this.pages = [
       { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Page Two', component: Page2 },
+      { title: 'MyProfileComponent', component:MyProfileComponent},
+      { title: 'HomeComponent', component:HomeComponent}
     ];
   }
 
@@ -32,7 +34,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(HomeComponent);
+        this.nav.setRoot(MyProfileComponent);
       } else {
         this.nav.setRoot(LoginPage);
       }

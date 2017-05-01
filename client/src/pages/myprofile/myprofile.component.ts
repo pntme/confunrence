@@ -1,23 +1,11 @@
-import {
-  Component,
-  ElementRef
-} from '@angular/core';
-import {
-  NavController
-} from 'ionic-angular';
-import {
-  MyLocation
-} from '../../common/mylocation.service';
-import {
-  AjaxService
-} from '../../common/ajax.service';
-import {
-  Subscription
-} from 'rxjs/Subscription';
-import {
-  MyProfileFormData
-} from './myprofile-formdata';
-
+import { Component,ElementRef } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { MyLocation } from '../../common/mylocation.service';
+import { AjaxService } from '../../common/ajax.service';
+import { Subscription } from 'rxjs/Subscription';
+import { MyProfileFormData } from './myprofile-formdata';
+import { App } from 'ionic-angular';
+import { HomeComponent } from '../home/home.component';
 
 
 
@@ -41,7 +29,8 @@ export class MyProfileComponent {
     public navCtrl: NavController,
     public myLocation: MyLocation,
     myElement: ElementRef,
-    public ajax: AjaxService
+    public ajax: AjaxService,
+    public appCtrl: App
   ) {
     this.elementRef = myElement;
     this.selectedIdx = -1;
@@ -110,6 +99,8 @@ export class MyProfileComponent {
   model = new MyProfileFormData("", "", "", "");
   submitted = false;
   onSubmit() {
+    console.log('submitted')
+     this.appCtrl.getRootNav().push(HomeComponent);
     this.submitted = true;
   }
 }
