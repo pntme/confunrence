@@ -42,7 +42,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     Page1,
     Page2,
-    MyProfileComponent
+    MyProfileComponent,
+    HomeComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),

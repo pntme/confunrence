@@ -6,6 +6,8 @@ import { MyProfileComponent } from '../pages/myprofile/myprofile.component';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { toast } from '../common/toast.service';
+import { HomeComponent } from '../pages/home/home.component';
+
 
 
 @Component({
@@ -14,7 +16,7 @@ import { toast } from '../common/toast.service';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = LoginPage;
+  rootPage: any = HomeComponent;
   pages: Array<{ title: string, component: any }>;
   constructor(public platform: Platform, public appCtrl: App, public _toast: toast) {
     this.initializeApp();
@@ -30,7 +32,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(MyProfileComponent);
+        this.nav.setRoot(HomeComponent);
       } else {
         this.nav.setRoot(LoginPage);
       }
