@@ -9,6 +9,11 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { MaterialModule } from '@angular/material';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { ExceptionService } from '../common/exception.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
 
 import 'hammerjs';
 
@@ -41,7 +46,9 @@ const cloudSettings: CloudSettings = {
   imports: [
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings),
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,6 +58,13 @@ const cloudSettings: CloudSettings = {
     Page2,
     MyProfileComponent
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, Diagnostic]
+  providers: [{
+    provide: ErrorHandler,
+    useClass: IonicErrorHandler
+  },
+    Geolocation,
+    Diagnostic,
+    ExceptionService
+  ]
 })
 export class AppModule { }

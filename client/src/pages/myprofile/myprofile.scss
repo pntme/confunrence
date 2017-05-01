@@ -67,3 +67,55 @@ my-profile  .button-md {
     color: #fff;
     text-align: left;
 }
+
+.suggestions{
+    border:solid 1px #f1f1f1;
+    position:absolute;
+    width:600px;
+    background: white;
+    z-index:999;
+    bottom:33px;
+}
+
+.suggestions ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container{
+    width:600px;
+    margin-left:10px;
+    margin-top:10px;
+}
+.suggestions ul li{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.suggestions ul li a{
+    padding:5px;
+    display: block;
+    text-decoration: none;
+    color:#7E7E7E;
+}
+
+.suggestions ul li a:hover{
+    background-color: #f1f1f1;
+}
+.selected{
+    border:solid #4CAF50 1px;
+    float:left; 
+    margin:2px;
+    padding:2px 15px;
+}
+ 
+.selected a{
+    cursor:pointer;
+    font-weight:bold;
+}
+.mat-empty{
+    display: block !important;
+    transform: translateY(-1.35em) scale(.75) !important;
+    width: 133.33333% !important;
+}
