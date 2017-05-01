@@ -25,7 +25,6 @@ export class LoginPage {
 
   GoFb() {
     this.facebookAuth.login().then((res) => {
-      console.log(res)
       this.appCtrl.getRootNav().push(MyProfileComponent);
     }, (e) => {
       console.log(e)
@@ -36,7 +35,6 @@ export class LoginPage {
   GoGmail() {
     console.log('want to login with gmail');
     this.googleAuth.login().then((res) => {
-      console.log(res)
       this.appCtrl.getRootNav().push(MyProfileComponent);
     }, (e) => {
       console.log(e);
