@@ -28,6 +28,7 @@ client/plugins/android.json
 client/plugins/ios.json
 client/www/
 $RECYCLE.BIN/
+server/node_modules/
 
 .DS_Store
 Thumbs.db

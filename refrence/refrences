@@ -1,4 +1,6 @@
 1. Pictures
    https://drive.google.com/drive/folders/0B5uwzlAcrFnNa3NpQVBkZndfVDg?usp=sharing
 
-2. 
+2. Keep express in watch mode
+   tool: https://github.com/remy/nodemon
+   command: nodemon conFUNrence
