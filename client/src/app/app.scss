@@ -15,3 +15,71 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.name1
+{
+	
+    position: absolute;
+    top: 96px;
+    width: 70px;
+    left: 11px;
+
+}
+.profileImg
+{
+	max-width: 100%;
+    border-radius: 232px;
+    width:60px;
+    height:60px;
+}
+.profileName
+{
+	
+	position: absolute;
+    top: 15px;
+    left: 69px;
+    font-size: 14px;
+    color: #000;
+    text-shadow: 1px 1px #fff;
+}
+.profileName1
+{
+	
+	position:absolute;
+	top:30px;
+	left:67px;
+	font-size:14px;
+	color: #000;
+    text-shadow: 1px 1px #fff;
+}
+.invitation
+{
+	
+    background: #EBEBEB;
+    opacity: 0.8;
+
+}
+.badge1
+{
+	
+	background: #063DF9;
+}
+
+@media (min-width:300px) and (max-width:340px){
+
+	.profileImg
+{
+	max-width: 100%;
+    border-radius: 232px;
+    width:60px;
+    height:60px;
+}
+.name1
+{
+	
+    position: absolute;
+    top: 74px;
+    width: 70px;
+    left: 11px;
+}
+
+}
