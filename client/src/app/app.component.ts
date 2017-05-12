@@ -7,7 +7,8 @@ import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { toast } from '../common/toast.service';
 import { HomeComponent } from '../pages/home/home.component';
-
+import { InvitationsComponent } from '../pages/invitations/invitations.component';
+import { ProfileComponent } from '../pages/profile/profile.component';
 
 
 
@@ -35,9 +36,9 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(HomeComponent);
+        this.nav.setRoot(ProfileComponent);
       } else {
-        this.nav.setRoot(HomeComponent);
+        this.nav.setRoot(ProfileComponent);
       }
 
 
@@ -60,14 +61,14 @@ export class MyApp {
   }
 
   openPage(page) {
-      // Reset the content nav to have just this page
-      // we wouldn't want the back button to show in this scenario
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 
-  logout(){
-     console.log('called')
-     this.nav.setRoot(LoginPage);
-     // localStorage.clear();
+  logout() {
+    console.log('called')
+    this.nav.setRoot(LoginPage);
+    // localStorage.clear();
   }
 }
