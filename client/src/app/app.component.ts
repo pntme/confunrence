@@ -35,9 +35,9 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(LoginPage);
+        this.nav.setRoot(HomeComponent);
       } else {
-        this.nav.setRoot(LoginPage);
+        this.nav.setRoot(HomeComponent);
       }
 
 
@@ -60,8 +60,14 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
+      // Reset the content nav to have just this page
+      // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logout(){
+     console.log('called')
+     this.nav.setRoot(LoginPage);
+     // localStorage.clear();
   }
 }
