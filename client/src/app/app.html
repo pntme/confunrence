@@ -20,21 +20,21 @@
             </div>
         </div>
         <ion-list>
-            <button menuClose ion-item>
-                <ion-icon ios="ios-wifi" md="ios-wifi"></ion-icon>&nbsp; &nbsp; &nbsp; Feed
+            <button menuClose ion-item (click)="openPage(pages[3].component)">
+                <ion-icon ios="ios-wifi" md="ios-wifi"></ion-icon>&nbsp; &nbsp; &nbsp;Near by
             </button>
             <button menuClose ion-item>
                 <ion-icon ios="ios-person" md="ios-person"></ion-icon>&nbsp; &nbsp; &nbsp; Profile
             </button>
             <button menuClose ion-item class="invitation">
-                <ion-icon ios="ios-filing" md="md-filing"></ion-icon>&nbsp; &nbsp; &nbsp; Invitations
+                <ion-icon ios="ios-filing" md="md-filing"></ion-icon>&nbsp; &nbsp; &nbsp;Invitations
                 <ion-badge item-right class="badge1">1new</ion-badge>
             </button>
             <button menuClose ion-item>
-                <ion-icon ios="ios-create" md="ios-create"></ion-icon>&nbsp; &nbsp; &nbsp; Create an Event
+                <ion-icon ios="ios-create" md="ios-create"></ion-icon>&nbsp; &nbsp; &nbsp;Create an Event
             </button>
             <button menuClose ion-item (click)="logout()">
-                <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>&nbsp; &nbsp; &nbsp; Log out
+                <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>&nbsp; &nbsp; &nbsp;Log out
             </button>
         </ion-list>
     </ion-content>
