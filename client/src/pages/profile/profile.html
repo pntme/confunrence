@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-navbar color="Orange">
+        <ion-title><img src="assets/img/logo.png"></ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only menuToggle>
+        <ion-icon name="md-list"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+<ion-grid>
+        <ion-row>
+            <ion-col col-10 >
+                <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+            </ion-col>
+            <ion-col col-2>
+                <ion-icon ios="ios-globe" md="md-globe" class='notificationicon'></ion-icon>
+                <ion-badge color="Orange" class="notificationbadge">4</ion-badge>
+            </ion-col>
+        </ion-row>        
+
+    </ion-grid>
+     <div >
+               <img src="assets/img/images.jpg" class="image2">
+               <div class="name2">
+                  <img src="assets/img/index.jpg" class="profileImg1">
+                      
+               </div>
+               
+
+       </div>
+        <div class="container-list">
+     <ion-item-group>
+            
+            <ion-item>
+               <p class="profiletext"><br/><br/><b>Prabhu</b><br/>
+               <b>Director of Project Management at</b><br/>
+               <b>XYZ Company</b><br/>
+               prabhu@gmail.com<br/>
+               Delhi University - New Delhi<br/>
+                 Geater Sun valley Area<br/>
+                 Lorem Ipsum is simply dummy text of the <br/> printing and typesetting industry.<br/><br/></p>
+            </ion-item>
+
+              
+        </ion-item-group>
+         <button ion-button class="button1">Invite</button><br/><br/>
+         <ion-item-group>
+         <ion-item>
+               <ion-toolbar color="default">
+      <ion-segment  color="default">
+      <ion-segment-button value="camera">
+       History
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+      Event List
+         </ion-segment-button>
+      
+           </ion-segment>
+          </ion-toolbar>
+
+        </ion-item>
+        </ion-item-group>
+        <ion-item-group>
+            <ion-item>
+               <ion-avatar item-left>
+                    <img src="assets/img/download.jpg">
+                </ion-avatar>
+                <h2><b>Finn</b></h2>
+                <h3 class="text1">
+                    <ion-icon ios="ios-pin" md="md-pin"></ion-icon> Don't Know What To Do! </h3>
+            </ion-item>
+        </ion-item-group>
+  </div>  
+
+  
+
+</ion-content>
