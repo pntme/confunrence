@@ -38,7 +38,7 @@ export class MyApp {
       if (AuthData) {
         this.nav.setRoot(HomeComponent);
       } else {
-        this.nav.setRoot(HomeComponent);
+        this.nav.setRoot(ProfileComponent);
       }
 
 
@@ -65,8 +65,7 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(component);
-  }
-
+}
   logout() {
     console.log('called')
     this.nav.setRoot(LoginPage);
