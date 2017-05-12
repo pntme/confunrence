@@ -1,0 +1,64 @@
+Profile{
+	
+}
+ion-searchbar
+{
+	
+	margin-top:-10px;
+
+}
+.notificationicon
+{
+	display: inline-block;
+    font-size: 2.2em;
+    margin-top:6px;
+    opacity:.5;
+}
+.notificationbadge
+{
+	position: absolute;
+    top: 3px;
+    border-radius: 81px;
+    left: 19px;
+}
+.image2
+{
+	
+	width:100%;
+}
+.name2
+{
+    position: absolute;
+    top: 195px;
+    width: 100%;
+    left: 112px;
+    z-index: 999;
+}
+.profileImg1
+{
+	max-width: 100%;
+    border-radius: 232px;
+    width: 109px;
+    height: 109px;
+    border: 1px solid blue;
+}
+.profiletext
+{
+	    text-align: center;
+}
+.button1
+{
+    text-transform: none;
+    position: absolute;
+    top: 414px;
+    left: 70px;
+    width: 50%;
+}
+
+@media (min-width:300px) and (max-width:340px){
+    
+    .profiletext
+    {
+    padding:10px;
+    }
+}

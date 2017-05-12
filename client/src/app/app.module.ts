@@ -11,6 +11,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { HomeComponent } from '../pages/home/home.component';
 import { InvitationsComponent } from '../pages/invitations/invitations.component';
+import { ProfileComponent } from '../pages/profile/profile.component';
 
 import 'hammerjs';
 
@@ -40,7 +41,8 @@ const cloudSettings: CloudSettings = {
     Page2,
     MyProfileComponent,
     HomeComponent,
-    InvitationsComponent
+    InvitationsComponent,
+    ProfileComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -55,7 +57,8 @@ const cloudSettings: CloudSettings = {
     Page2,
     MyProfileComponent,
     HomeComponent,
-    InvitationsComponent
+    InvitationsComponent,
+    ProfileComponent
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, Diagnostic]
 })
