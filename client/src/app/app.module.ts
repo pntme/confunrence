@@ -13,9 +13,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import { ExceptionService } from '../common/exception.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_CONFIG, AppConfig } from './app.config';
-
-
-
+import { InvitationsComponent } from '../pages/invitations/invitations.component';
 
 
 import 'hammerjs';
@@ -45,7 +43,8 @@ const cloudSettings: CloudSettings = {
     Page1,
     Page2,
     MyProfileComponent,
-    HomeComponent
+    HomeComponent,
+    InvitationsComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -61,7 +60,8 @@ const cloudSettings: CloudSettings = {
     Page1,
     Page2,
     MyProfileComponent,
-    HomeComponent
+    HomeComponent,
+    InvitationsComponent
   ],
   providers: [{
     provide: ErrorHandler,
