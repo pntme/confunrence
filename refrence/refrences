@@ -4,3 +4,9 @@
 2. Keep express in watch mode
    tool: https://github.com/remy/nodemon
    command: nodemon conFUNrence
+
+3. Run forever
+   tool: https://github.com/Unitech/pm2
+   start: pm2 start npm -- start 
+   stop: pm2 stop all  
+   log: pm2 logs

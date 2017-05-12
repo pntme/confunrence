@@ -10,6 +10,7 @@ import { HomeComponent } from '../pages/home/home.component';
 
 
 
+
 @Component({
   templateUrl: 'app.html',
   providers: [toast]
@@ -25,8 +26,8 @@ export class MyApp {
     this.pages = [
       { title: 'Page One', component: Page1 },
       { title: 'Page Two', component: Page2 },
-      { title: 'MyProfileComponent', component:MyProfileComponent},
-      { title: 'HomeComponent', component:HomeComponent}
+      { title: 'MyProfileComponent', component: MyProfileComponent },
+      { title: 'HomeComponent', component: HomeComponent }
     ];
   }
 
@@ -34,7 +35,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
       if (AuthData) {
-        this.nav.setRoot(MyProfileComponent);
+        this.nav.setRoot(LoginPage);
       } else {
         this.nav.setRoot(LoginPage);
       }

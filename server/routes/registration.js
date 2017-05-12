@@ -46,15 +46,19 @@ router.route('/')
     //POST a new registration
     .post(function(req, res) {
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
-
-        var name = req.body.name;
-        var badge = req.body.badge;
-        var dob = req.body.dob;
-        var company = req.body.company;
-        var isloved = req.body.isloved;
+        var userName = req.body.userName;
+        var email = req.body.email;
+        var socialId = req.body.SocialId;
+        var userPic = req.body.UserPic;
+        var method = req.body.method;
+        console.log(req.body)
         //call the create function for our database
         mongoose.model('registration').create({
-            name: name
+            userName: userName,
+            email: email,
+            socialId: socialId,
+            userPic: userPic,
+            method: method
         }, function(err, registration) {
             if (err) {
                 res.send("There was a problem adding the information to the database.");

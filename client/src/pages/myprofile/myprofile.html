@@ -1,7 +1,19 @@
-<ion-header>
-    <ion-navbar color="Orange">
+<!-- <ion-header>
+    <ion-navbar color="Orange" hideBackButton>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title><img src="assets/img/logo.png"></ion-title>
     </ion-navbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Page Two</ion-title>
+  </ion-navbar>
 </ion-header>
 <ion-content>
     <div class="circular">
@@ -19,12 +31,12 @@
                 </div>
             </md-input-container>
             <md-input-container>
-                  <input type="text"  id="location" [(ngModel)]="model.location" name="location" mdInput placeholder="Location" #location="ngModel" required>
-                    <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
+                <input type="text" id="location" [(ngModel)]="model.location" name="location" mdInput placeholder="Location" #location="ngModel" required>
+                <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
                     Location is required
                 </div>
             </md-input-container>
-<!--             <md-input-container>
+            <!--             <md-input-container>
                 <input mdInput  placeholder="Interest" type="text" [(ngModel)]=query (keyup)=filter($event) id="country">
                 <div class="suggestions" *ngIf="filteredList.length > 0">
                     <ul *ngFor="let item of filteredList; let idx = index">
@@ -41,19 +53,18 @@
                 </div>
             </md-input-container> -->
             <md-input-container>
-                <input mdInput placeholder="Company"  id="company" [(ngModel)]="model.company" name="company" mdInput  #company="ngModel" required>
-                   <div [hidden]="company.valid || company.pristine" class="alert alert-danger">
+                <input mdInput placeholder="Company" id="company" [(ngModel)]="model.company" name="company" mdInput #company="ngModel" required>
+                <div [hidden]="company.valid || company.pristine" class="alert alert-danger">
                     company is required
                 </div>
             </md-input-container>
             <md-input-container>
-                <input mdInput placeholder="Event"  id="event" [(ngModel)]="model.event" name="event" mdInput  #event="ngModel" required>
-                    <div [hidden]="event.valid || event.pristine" class="alert alert-danger">
+                <input mdInput placeholder="Event" id="event" [(ngModel)]="model.event" name="event" mdInput #event="ngModel" required>
+                <div [hidden]="event.valid || event.pristine" class="alert alert-danger">
                     Location is required
                 </div>
-
             </md-input-container>
-            <button ion-button block type="submit" [disabled]="!heroForm.form.valid" >Save & Go</button>
+            <button ion-button block type="submit" [disabled]="!heroForm.form.valid">Save & Go</button>
         </form>
     </div>
 </ion-content>

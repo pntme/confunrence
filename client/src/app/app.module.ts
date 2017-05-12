@@ -12,7 +12,9 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 import { HomeComponent } from '../pages/home/home.component';
 import { ExceptionService } from '../common/exception.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-  
+import { APP_CONFIG, AppConfig } from './app.config';
+
+
 
 
 
@@ -63,11 +65,12 @@ const cloudSettings: CloudSettings = {
   ],
   providers: [{
     provide: ErrorHandler,
-    useClass: IonicErrorHandler
+    useClass: IonicErrorHandler,
   },
     Geolocation,
     Diagnostic,
-    ExceptionService
+    ExceptionService,
+  { provide: APP_CONFIG, useValue: AppConfig }
   ]
 })
 export class AppModule { }

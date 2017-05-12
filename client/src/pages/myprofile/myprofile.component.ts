@@ -1,4 +1,4 @@
-import { Component,ElementRef } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MyLocation } from '../../common/mylocation.service';
 import { AjaxService } from '../../common/ajax.service';
@@ -15,7 +15,7 @@ import { HomeComponent } from '../home/home.component';
   providers: [MyLocation, AjaxService]
 })
 export class MyProfileComponent {
- 
+
   public query = '';
   public interest;
   public UserPic;
@@ -39,7 +39,7 @@ export class MyProfileComponent {
 
   ionViewWillEnter() {
 
-    this.ajax.call().subscribe((data) => {
+    this.ajax.Get('a.json').subscribe((data) => {
       this.interest = data;
     });
     this.subscription = this.myLocation.CheckForGps().subscribe(data => {
@@ -100,7 +100,7 @@ export class MyProfileComponent {
   submitted = false;
   onSubmit() {
     console.log('submitted')
-     this.appCtrl.getRootNav().push(HomeComponent);
+    this.appCtrl.getRootNav().push(HomeComponent);
     this.submitted = true;
   }
 }
