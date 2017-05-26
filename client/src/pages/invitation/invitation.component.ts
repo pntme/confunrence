@@ -5,11 +5,11 @@ import { MyLocation } from '../../common/mylocation.service';
 
 
 @Component({
-  selector: 'Home',
-  templateUrl: 'home.html',
+  selector: 'Invitation',
+  templateUrl: 'invitation.html',
   providers: [MyLocation]
 })
-export class HomeComponent {
+export class InvitationPage {
 
   constructor(public navCtrl: NavController, public myLocation: MyLocation) {
 

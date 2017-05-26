@@ -4,7 +4,12 @@ var registrationSchema = new mongoose.Schema({
      userName: String,
      email: String,
      socialId: String,
-     userPic: String,
-     method: String
+     UserPic: String,
+     method: String,
+     company: String,
+     location: Object,
+     _event: Object
+
 });
-mongoose.model('registration', registrationSchema);
+var registration = mongoose.model('registration', registrationSchema);
+module.exports = registration;

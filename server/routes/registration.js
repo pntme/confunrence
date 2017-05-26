@@ -1,41 +1,34 @@
 var express = require('express'),
     router = express.Router(),
-    mongoose = require('mongoose'), //mongo connection
-    bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'); //used to manipulate POST
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override');
+Registration = require('../model/registration');
 
-//Any requests to this controller must pass through this 'use' function
-//Copy and pasted from method-override
+
+
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(methodOverride(function(req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-        // look in urlencoded POST bodies and delete it
         var method = req.body._method
         delete req.body._method
         return method
     }
 }))
 
-//build the REST operations at the base for registration
-//this will be accessible from http://127.0.0.1:3000/registration if the default route for / is left unchanged
 router.route('/')
-    //GET all registration
     .get(function(req, res, next) {
-        //retrieve all registration from Monogo
         mongoose.model('registration').find({}, function(err, registration) {
             if (err) {
                 return console.error(err);
             } else {
-                //respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
                 res.format({
-                    //HTML response will render the index.jade file in the views/registration folder. We are also setting "registration" to be an accessible variable in our jade view
                     html: function() {
                         res.render('registration/index', {
                             title: 'All my registration',
                             "registration": registration
                         });
                     },
-                    //JSON response will show all registration in JSON format
                     json: function() {
                         res.json(registration);
                     }
@@ -43,32 +36,70 @@ router.route('/')
             }
         });
     })
-    //POST a new registration
-    .post(function(req, res) {
-        // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
-        var userName = req.body.userName;
-        var email = req.body.email;
-        var socialId = req.body.SocialId;
-        var userPic = req.body.UserPic;
-        var method = req.body.method;
-        console.log(req.body)
-        //call the create function for our database
-        mongoose.model('registration').create({
-            userName: userName,
-            email: email,
-            socialId: socialId,
-            userPic: userPic,
-            method: method
-        }, function(err, registration) {
+
+
+
+
+.post(function(req, res) {
+    if (req.body.email) {
+        Registration.find({
+            email: req.body.email
+        }, function(err, users) {
             if (err) {
-                res.send("There was a problem adding the information to the database.");
+                res.json(err);
+
             } else {
-                res.json(registration);
+                if (users.length === 0) {
+                    var User = new Registration(req.body);
+                    User.save(function(err, user) {
+                        if (err) {
+                            res.json(err);
+
+                        } else {
+                            res.json(user)
+
+                        }
+
+                    });
+                } else {
+                    Registration.update({ email: req.body.email }, req.body, { multi: false }, function(err, user) {
+                        if (err) {
+                            res.json(err);
+
+                        } else {
+                            res.json(users);
+
+                        }
+                    });
+                }
             }
+        });
+    } else {
+        res.json({
+            "code": 3,
+            "status": "Email not found"
         })
+    }
+});
+
+
+router.route('/SetProfile').post(function(req, res) {
+    Registration.findById({ _id: req.body._id }, function(err, user) {
+        if (err) {
+            res.json(err)
+        } else {
+            user.location = req.body.location;
+            user.company = req.body.company;
+            user._event = req.body.event
+            user.save(function(err) {
+                if (err) {
+                    res.json(err);
+                } else {
+                    res.json(user);
+                }
+            });
+        }
     });
-
-/* GET New registration page. */
-
+})
 
 module.exports = router;

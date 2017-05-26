@@ -8,6 +8,7 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
+ <ng2-slim-loading-bar [height]="'4px'" [color]="'#387EF5'"></ng2-slim-loading-bar>
 <ion-content>
     <div class="circular">
         <div class="circularCamButton">
@@ -16,7 +17,7 @@
         <img [src]="UserPic" class="img-circle">
     </div>
     <div style="margin-top: 10px;">
-        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <form (ngSubmit)="onSubmit(empForm, $event)" #heroForm="ngForm">
             <md-input-container>
                 <input mdInput placeholder="Username" id="Username" required [(ngModel)]="model.username" name="Username" #Username="ngModel">
                 <div [hidden]="Username.valid || Username.pristine" class="alert alert-danger">
@@ -57,7 +58,9 @@
                     Location is required
                 </div>
             </md-input-container>
-            <button ion-button block type="submit" [disabled]="!heroForm.form.valid">Save & Go</button>
+            <button ion-button block  [disabled]="!heroForm.form.valid">Save & Go</button>
         </form>
+
+
     </div>
 </ion-content>

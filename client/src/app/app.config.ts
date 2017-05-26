@@ -8,4 +8,6 @@ export interface IAppConfig {
 
 export const AppConfig: IAppConfig = {
   apiEndpoint: "http://139.59.76.168:3000/"
+  // "http://139.59.76.168:3000/"
+  // "http://localhost:3000/"
 };

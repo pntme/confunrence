@@ -2,27 +2,30 @@ import { Component, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MyLocation } from '../../common/mylocation.service';
 import { AjaxService } from '../../common/ajax.service';
+import { HeaderLoading } from '../../common/headerloading.service';
 import { Subscription } from 'rxjs/Subscription';
 import { MyProfileFormData } from './myprofile-formdata';
 import { App } from 'ionic-angular';
-import { HomeComponent } from '../home/home.component';
+import { NearbyPage } from '../nearby/nearby.component';
+
 
 
 
 @Component({
   selector: 'my-profile',
   templateUrl: 'myprofile.html',
-  providers: [MyLocation, AjaxService]
+  providers: [MyLocation, AjaxService, HeaderLoading]
 })
 export class MyProfileComponent {
-
   public query = '';
   public interest;
   public UserPic;
+  public UserData;
   userForm: any;
   public filteredList = [];
   public elementRef;
   public selected = [];
+  public latLng;
   selectedIdx: number;
   subscription: Subscription;
   constructor(
@@ -30,7 +33,8 @@ export class MyProfileComponent {
     public myLocation: MyLocation,
     myElement: ElementRef,
     public ajax: AjaxService,
-    public appCtrl: App
+    public appCtrl: App,
+    public HLoading: HeaderLoading
   ) {
     this.elementRef = myElement;
     this.selectedIdx = -1;
@@ -38,22 +42,24 @@ export class MyProfileComponent {
   }
 
   ionViewWillEnter() {
-
     this.ajax.Get('a.json').subscribe((data) => {
       this.interest = data;
     });
-    this.subscription = this.myLocation.CheckForGps().subscribe(data => {
-      this.model.location = data[0].formatted_address;
-    });
-    let UserData: string = localStorage.getItem("ionic_user_5ad47bc5");
-    // if(localStorage.getItem('LoginType') === 'fb'){
-    this.model = new MyProfileFormData(JSON.parse(UserData).social.facebook.data.full_name, "", "", "");
-    this.UserPic = 'http://graph.facebook.com/' + JSON.parse(UserData).details.facebook_id + '/picture?type=large';
-
-    // }
-
+    this.GetLocation();
+    this.UserData = localStorage.getItem("LoginData");
+    this.model = new MyProfileFormData(JSON.parse(this.UserData)[0].userName, "", JSON.parse(this.UserData)[0].company, JSON.parse(this.UserData)[0]._event);
+    this.UserPic = JSON.parse(this.UserData)[0].UserPic;
   }
 
+  GetLocation() {
+    this.subscription = this.myLocation.CheckForGps().subscribe(data => {
+      console.log(data)
+      if (data) {
+        this.model.location = data.Result[0].formatted_address;
+        this.latLng = data.Position;
+      }
+    });
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
@@ -98,9 +104,27 @@ export class MyProfileComponent {
   }
   model = new MyProfileFormData("", "", "", "");
   submitted = false;
-  onSubmit() {
-    console.log('submitted')
-    this.appCtrl.getRootNav().push(HomeComponent);
-    this.submitted = true;
+  onSubmit(empForm: any, event: Event) {
+    event.preventDefault();
+    this.HLoading.start();
+    let DataToSend = {
+      '_id': JSON.parse(this.UserData)[0]._id,
+      'location': {
+        // 'lat': this.latLng.coords.latitude,
+        // 'lng': this.latLng.coords.longitude
+      },
+      'company': this.model.company,
+      'event': this.model.event
+
+    }
+    //   // this.submitted = true;
+    this.ajax.Post('registration/SetProfile', DataToSend).subscribe((data) => {
+      let arr = [];
+      arr.push(data)
+      localStorage.setItem('LoginData', JSON.stringify(arr));
+      this.appCtrl.getRootNav().push(NearbyPage);
+      this.HLoading.stop();
+
+    });
   }
 }

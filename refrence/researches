@@ -2,3 +2,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+
+2. If you found this warning during firing API to express 
+
+  " DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html"
+
+  then just add this line 
+     mongoose.Promise = global.Promise;
+  before
+     mongoose.connect('mongodb://localhost/confunrence');   

@@ -9,12 +9,17 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { MaterialModule } from '@angular/material';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
-import { HomeComponent } from '../pages/home/home.component';
-import { ExceptionService } from '../common/exception.service';
+import { toast } from '../common/toast.service';
+import { AjaxService } from '../common/ajax.service';
+import { NearbyPage } from '../pages/nearby/nearby.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_CONFIG, AppConfig } from './app.config';
-import { InvitationsComponent } from '../pages/invitations/invitations.component';
+import { InvitationPage } from '../pages/invitation/invitation.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 
 import 'hammerjs';
@@ -44,16 +49,20 @@ const cloudSettings: CloudSettings = {
     Page1,
     Page2,
     MyProfileComponent,
-    HomeComponent,
-    InvitationsComponent,
+    NearbyPage,
+    InvitationPage,
     ProfileComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings),
+    SlimLoadingBarModule.forRoot(),
     MaterialModule,
+    BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,18 +71,21 @@ const cloudSettings: CloudSettings = {
     Page1,
     Page2,
     MyProfileComponent,
-    HomeComponent,
-    InvitationsComponent,
+    NearbyPage,
+    InvitationPage,
     ProfileComponent
   ],
-  providers: [{
-    provide: ErrorHandler,
-    useClass: IonicErrorHandler,
-  },
+  providers: [
+
+    toast,
+    AjaxService,
+    {
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler,
+    },
     Geolocation,
     Diagnostic,
-    ExceptionService,
-  { provide: APP_CONFIG, useValue: AppConfig }
+    { provide: APP_CONFIG, useValue: AppConfig }
   ]
 })
 export class AppModule { }

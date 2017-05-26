@@ -10,3 +10,11 @@
    start: pm2 start npm -- start 
    stop: pm2 stop all  
    log: pm2 logs
+
+4. Fb data login
+   LoginData: {"userName":"Prabhu Tiwari","email":"prabhunath877@gmail.com","SocialId":"787026824793089","UserPic":"http://graph.facebook.com/787026824793089/picture?type=large","method":"FB"}
+
+   ionic_user_5ad47bc5 : {"id":"f4b32fbf-83c6-4fee-9576-2e9d8c5a21b0","data":{},"details":{"image":"https://s3.amazonaws.com/ionic-api-auth/users-default-avatar@2x.png","facebook_id":"787026824793089","name":null},"fresh":false,"social":{"facebook":{"uid":"787026824793089","data":{"email":"prabhunath877@gmail.com","profile_picture":"https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/15350725_735464056616033_5633149156278386989_n.jpg?oh=1f952920c8cceeccfdc89dd9ed1affed&oe=59740AEC","raw_data":{"email":"prabhunath877@gmail.com","id":"787026824793089","first_name":"Prabhu","picture":{"data":{"is_silhouette":false,"url":"https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/15350725_735464056616033_5633149156278386989_n.jpg?oh=1f952920c8cceeccfdc89dd9ed1affed&oe=59740AEC"}},"name":"Prabhu Tiwari","last_name":"Tiwari"},"username":null,"full_name":"Prabhu Tiwari"}}}}
+
+5. Before starting work on express/DB and backend must check it
+   https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications

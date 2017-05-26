@@ -17,7 +17,11 @@ export class MyLocation {
           let geocoder = new google.maps.Geocoder();
           let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           geocoder.geocode({ 'latLng': location }, (results, status) => {
-            observer.next(results);
+            let ToReturn = {
+              Position: position,
+              Result: results
+            }
+            observer.next(ToReturn);
           });
         }, (error) => {
           switch (error.code) {

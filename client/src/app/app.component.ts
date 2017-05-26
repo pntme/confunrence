@@ -1,14 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, Nav, Platform } from 'ionic-angular';
+import { App, Nav, Platform, NavController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { LoginPage } from '../pages/login/login.component';
 import { MyProfileComponent } from '../pages/myprofile/myprofile.component';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { toast } from '../common/toast.service';
-import { HomeComponent } from '../pages/home/home.component';
-import { InvitationsComponent } from '../pages/invitations/invitations.component';
+import { InvitationPage } from '../pages/invitation/invitation.component';
+import { NearbyPage } from '../pages/nearby/nearby.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
+import { FacebookAuth, GoogleAuth } from '@ionic/cloud-angular';
+
 
 
 
@@ -18,30 +20,40 @@ import { ProfileComponent } from '../pages/profile/profile.component';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = MyProfileComponent;
+  // rootPage: any = MyProfileComponent;
   pages: Array<{ title: string, component: any }>;
-  constructor(public platform: Platform, public appCtrl: App, public _toast: toast) {
-    this.initializeApp();
+  constructor(public platform: Platform,
+    public appCtrl: App,
+    public _toast: toast,
+    public facebookAuth: FacebookAuth,
+    public googleAuth: GoogleAuth
+  ) {
+
     // used for an example of ngFor and navigation
 
     this.pages = [
       { title: 'Page One', component: Page1 },
       { title: 'Page Two', component: Page2 },
       { title: 'MyProfileComponent', component: MyProfileComponent },
-      { title: 'HomeComponent', component: HomeComponent }
+      { title: 'InvitationPage', component: InvitationPage },
+      { title: 'Near by', component: NearbyPage },
+      { title: 'ProfileComponent', component: ProfileComponent }
     ];
+    this.initializeApp();
   }
 
   initializeApp() {
+
     this.platform.ready().then(() => {
-      let AuthData: Object = localStorage.getItem("ionic_user_5ad47bc5");
+
+      // let cur = this.nav.getActive().name;
+      // console.log(cur)
+      let AuthData: Object = localStorage.getItem("LoginData");
       if (AuthData) {
-        this.nav.setRoot(HomeComponent);
+        this.nav.setRoot(MyProfileComponent);
       } else {
-        this.nav.setRoot(ProfileComponent);
+        this.nav.setRoot(LoginPage);
       }
-
-
       let count = 0;
       this.platform.registerBackButtonAction(() => {
         if (count === 0) {
@@ -60,15 +72,19 @@ export class MyApp {
     });
   }
 
+
   openPage(component) {
-    console.log(component)
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(component);
-}
+    this.nav.push(component);
+  }
+
   logout() {
-    console.log('called')
+
+    let Data = JSON.parse(localStorage.getItem('LoginData'));
+    if (Data.method === 'FB')
+      this.facebookAuth.logout();
+    if (Data.method === 'GMAIL')
+      this.googleAuth.logout();
+    localStorage.clear();
     this.nav.setRoot(LoginPage);
-    // localStorage.clear();
   }
 }
