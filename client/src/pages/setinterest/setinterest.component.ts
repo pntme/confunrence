@@ -4,20 +4,18 @@ import { MyLocation } from '../../common/mylocation.service';
 import { AjaxService } from '../../common/ajax.service';
 import { HeaderLoading } from '../../common/headerloading.service';
 import { Subscription } from 'rxjs/Subscription';
-import { MyProfileFormData } from './myprofile-formdata';
 import { App } from 'ionic-angular';
 import { ImageService } from '../../common/images.service';
-import { SetInterestComponenet } from '../setinterest/setinterest.component';
 
 
 
 
 @Component({
-  selector: 'my-profile',
-  templateUrl: 'myprofile.html',
+  selector: 'setinterest',
+  templateUrl: 'setinterest.html',
   providers: [MyLocation, AjaxService, HeaderLoading, ImageService]
 })
-export class MyProfileComponent {
+export class SetInterestComponenet {
   public query = '';
   public interest;
   public UserPic;
@@ -44,23 +42,11 @@ export class MyProfileComponent {
   }
 
   ionViewWillEnter() {
-    this.ajax.Get('a.json').subscribe((data) => {
-      this.interest = data;
-    });
-    // this.GetLocation();
-    this.UserData = localStorage.getItem("LoginData");
-    this.model = new MyProfileFormData(JSON.parse(this.UserData)[0].userName, "", JSON.parse(this.UserData)[0].company, JSON.parse(this.UserData)[0]._event);
-    this.UserPic = JSON.parse(this.UserData)[0].UserPic;
+    
   }
 
   GetLocation() {
-    this.subscription = this.myLocation.CheckForGps().subscribe(data => {
-      console.log(data)
-      if (data) {
-        this.model.location = data.Result[0].formatted_address;
-        this.latLng = data.Position;
-      }
-    });
+   
   }
  
 
@@ -102,30 +88,13 @@ export class MyProfileComponent {
     }
     this.selectedIdx = -1;
   }
-  model = new MyProfileFormData("", "", "", "");
+ 
   submitted = false;
   onSubmit(empForm: any, event: Event) {
     event.preventDefault();
     this.HLoading.start();
-    let DataToSend = {
-      '_id': JSON.parse(this.UserData)[0]._id,
-      'location': {
-        // 'lat': this.latLng.coords.latitude,
-        // 'lng': this.latLng.coords.longitude
-      },
-      'company': this.model.company,
-      'event': this.model.event
-
-    }
-    //   // this.submitted = true;
-    this.ajax.Post('registration/SetProfile', DataToSend).subscribe((data) => {
-      let arr = [];
-      arr.push(data)
-      localStorage.setItem('LoginData', JSON.stringify(arr));
-      this.appCtrl.getRootNav().push(SetInterestComponenet);
-      this.HLoading.stop();
-
-    });
+  
+  
   }
 
 

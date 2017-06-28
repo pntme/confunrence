@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-navbar color="Orange">
         <ion-title><img src="assets/img/logo.png"></ion-title>
         <ion-buttons end>
@@ -7,7 +7,7 @@
             </button>
         </ion-buttons>
     </ion-navbar>
-</ion-header>
+</ion-header> -->
 <ion-menu [content]="content" side="right">
     <ion-content>
         <div>
@@ -23,9 +23,9 @@
             <button menuClose ion-item (click)="openPage(pages[4].component)">
                 <ion-icon ios="ios-wifi" md="ios-wifi"></ion-icon>&nbsp; &nbsp; &nbsp;Near by
             </button>
-            <button menuClose ion-item (click)="openPage(pages[2].component)">
+           <!--  <button menuClose ion-item (click)="openPage(pages[2].component)">
                 <ion-icon ios="ios-person" md="ios-person"></ion-icon>&nbsp; &nbsp; &nbsp; Profile
-            </button>
+            </button> -->
             <button menuClose ion-item class="invitation" (click)="openPage(pages[3].component)">
                 <ion-icon ios="ios-filing" md="md-filing"></ion-icon>&nbsp; &nbsp; &nbsp;Invitations
                 <ion-badge item-right class="badge1">1new</ion-badge>

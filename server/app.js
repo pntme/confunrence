@@ -1,4 +1,5 @@
 var express = require('express'),
+    multer = require('multer'),
     path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),

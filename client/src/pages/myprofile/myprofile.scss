@@ -15,7 +15,7 @@ ion-title img {
 }
 
 .circular {
-    margin-top: 12px;
+    margin-top: 72px;
 }
 
 .circularCamButton {
@@ -28,7 +28,7 @@ ion-title img {
     position: absolute;
     /* left: 60%; */
     left: 123px;
-    top: 180px;
+    top: 236px;
     right: 0px;
     margin: auto;
 }
@@ -113,4 +113,14 @@ my-profile  .button-md {
     display: block !important;
     transform: translateY(-1.35em) scale(.75) !important;
     width: 133.33333% !important;
+}
+.Img-container{
+    width: 214px;
+    border: 1px solid #0435FB;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    height: 214px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

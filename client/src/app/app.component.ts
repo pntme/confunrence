@@ -12,8 +12,6 @@ import { ProfileComponent } from '../pages/profile/profile.component';
 import { FacebookAuth, GoogleAuth } from '@ionic/cloud-angular';
 
 
-
-
 @Component({
   templateUrl: 'app.html',
   providers: [toast]
@@ -43,30 +41,13 @@ export class MyApp {
   }
 
   initializeApp() {
-
     this.platform.ready().then(() => {
-
-      // let cur = this.nav.getActive().name;
-      // console.log(cur)
       let AuthData: Object = localStorage.getItem("LoginData");
       if (AuthData) {
         this.nav.setRoot(MyProfileComponent);
       } else {
         this.nav.setRoot(LoginPage);
-      }
-      let count = 0;
-      this.platform.registerBackButtonAction(() => {
-        if (count === 0) {
-          count++;
-          this._toast.notify('Press back again to exit', 3000, 'bottom', true, '');
-          setTimeout(() => {
-            count = 0;
-          }, 3000);
-        } else if (count === 1) {
-          count = 0;
-          navigator['app'].exitApp();
-        }
-      }, 1);
+      }          
       StatusBar.styleDefault();
       Splashscreen.hide();
     });
@@ -74,6 +55,7 @@ export class MyApp {
 
 
   openPage(component) {
+    console.log(this.nav)
     this.nav.push(component);
   }
 

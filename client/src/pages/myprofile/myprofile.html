@@ -1,20 +1,26 @@
-<ion-header>
-    <ion-navbar color="Orange">
-        <ion-title><img src="assets/img/logo.png"></ion-title>
+<!-- <ion-header>
+    <ion-navbar color="Orange" [hideBackButton]="true">
+        <ion-title> -->
+        <img src="assets/img/logo.png">
+
+       <!--  </ion-title>
         <ion-buttons end>
             <button ion-button icon-only menuToggle>
                 <ion-icon name="md-list"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
-</ion-header>
- <ng2-slim-loading-bar [height]="'4px'" [color]="'#387EF5'"></ng2-slim-loading-bar>
+</ion-header> -->
+ <!-- <ng2-slim-loading-bar [height]="'4px'" [color]="'#387EF5'"></ng2-slim-loading-bar> -->
 <ion-content>
     <div class="circular">
-        <div class="circularCamButton">
+        <div class="circularCamButton" (click)="TakeImage()">
             <ion-icon ios="ios-camera-outline" md="md-camera"></ion-icon>
         </div>
-        <img [src]="UserPic" class="img-circle">
+       <!--  <img [src]="UserPic" class="img-circle"> -->
+    <div class="Img-container" [ngStyle]="{'background-image': 'url(' + UserPic + ')'}">
+
+    </div>
     </div>
     <div style="margin-top: 10px;">
         <form (ngSubmit)="onSubmit(empForm, $event)" #heroForm="ngForm">

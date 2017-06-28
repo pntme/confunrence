@@ -50,6 +50,7 @@ router.route('/')
 
             } else {
                 if (users.length === 0) {
+                    // req.body.push({"loginCount": 0});
                     var User = new Registration(req.body);
                     User.save(function(err, user) {
                         if (err) {
@@ -62,6 +63,8 @@ router.route('/')
 
                     });
                 } else {
+                    console.log(req.body.email)
+                    // req.body.push({"loginCount": "1+"});
                     Registration.update({ email: req.body.email }, req.body, { multi: false }, function(err, user) {
                         if (err) {
                             res.json(err);
@@ -100,6 +103,7 @@ router.route('/SetProfile').post(function(req, res) {
             });
         }
     });
-})
+});
+
 
 module.exports = router;

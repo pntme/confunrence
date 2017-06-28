@@ -20,7 +20,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+import { ImageService } from '../common/images.service';
+import { SetInterestComponenet } from '../pages/setinterest/setinterest.component';
 
 import 'hammerjs';
 
@@ -51,7 +56,8 @@ const cloudSettings: CloudSettings = {
     MyProfileComponent,
     NearbyPage,
     InvitationPage,
-    ProfileComponent
+    ProfileComponent,
+    SetInterestComponenet
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -73,10 +79,10 @@ const cloudSettings: CloudSettings = {
     MyProfileComponent,
     NearbyPage,
     InvitationPage,
-    ProfileComponent
+    ProfileComponent,
+    SetInterestComponenet
   ],
   providers: [
-
     toast,
     AjaxService,
     {
@@ -85,6 +91,11 @@ const cloudSettings: CloudSettings = {
     },
     Geolocation,
     Diagnostic,
+    File,
+    ImageService,
+    Transfer,
+    Camera,
+    FilePath,
     { provide: APP_CONFIG, useValue: AppConfig }
   ]
 })

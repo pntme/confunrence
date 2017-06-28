@@ -5,6 +5,7 @@ import { MyProfileComponent } from '../myprofile/myprofile.component';
 import { AjaxService } from '../../common/ajax.service';
 import { NavController } from 'ionic-angular';
 import { toast } from '../../common/toast.service';
+import { SetInterestComponenet } from '../setinterest/setinterest.component';
 
 
 
@@ -69,8 +70,11 @@ export class LoginPage {
     if (DataToSave.email) {
       this.ajax.Post('registration', DataToSave).subscribe((data) => {
         localStorage.setItem('LoginData', JSON.stringify(data));
-        this.appCtrl.getRootNav().push(MyProfileComponent);
         this.navCtrl.setRoot(MyProfileComponent)
+        if(data.loginCount == 1)
+            this.appCtrl.getRootNav().push(MyProfileComponent);
+        else
+            this.appCtrl.getRootNav().push(SetInterestComponenet);
       });
     } else {
       let alert = this.alertCtrl.create({
