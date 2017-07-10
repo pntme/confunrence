@@ -6,6 +6,8 @@ import { HeaderLoading } from '../../common/headerloading.service';
 import { Subscription } from 'rxjs/Subscription';
 import { App } from 'ionic-angular';
 import { ImageService } from '../../common/images.service';
+import { InvitationPage } from '../invitation/invitation.component';
+
 
 
 
@@ -42,13 +44,15 @@ export class SetInterestComponenet {
   }
 
   ionViewWillEnter() {
-    
+    this.ajax.Get('a.json', 'local').subscribe((data) => {
+      this.interest = data;
+    });
+
+
   }
 
-  GetLocation() {
-   
-  }
- 
+
+
 
   filter(event: any) {
     if (this.query !== "") {
@@ -88,23 +92,17 @@ export class SetInterestComponenet {
     }
     this.selectedIdx = -1;
   }
- 
-  submitted = false;
-  onSubmit(empForm: any, event: Event) {
-    event.preventDefault();
-    this.HLoading.start();
-  
-  
-  }
 
+  SaveInterest() {
+    localStorage.setItem('Interest', this.selected.toString());
+    this.ajax.Get('http://truecvs.com/confunrence/interest.php?interest=' + JSON.stringify(this.selected) + '&user_id=' + JSON.parse(localStorage.getItem('LoginData'))[0]._id, 'phpServer').subscribe((data) => {
+      console.log(data)
+      this.appCtrl.getRootNav().push(InvitationPage);
+      // localStorage.setItem('LoginData', JSON.stringify(arr));
+      // this.appCtrl.getRootNav().push(SetInterestComponenet);
+      // this.HLoading.stop();
 
-
-  TakeImage() {
-    this.imageService.presentActionSheet().then((response) => {
-      this.UserPic = response[0];
-      this.imageService.uploadImage(response[0], response[1]);
-    }, (err) => {
-      console.log(err);
     });
+
   }
 }

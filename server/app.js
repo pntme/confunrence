@@ -8,9 +8,11 @@ var express = require('express'),
 
 var db = require('./model/db'),
     blob = require('./model/registration');
+    blob2 = require('./model/interest');
 
 var routes = require('./routes/index'),
     registration = require('./routes/registration');
+    interest = require('./routes/interest')
 
 //var users = require('./routes/users');
 
@@ -50,6 +52,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/registration', registration);
+app.use('/interest', interest);
 
 
 // catch 404 and forward to error handler

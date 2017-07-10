@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-navbar color="Orange">
         <ion-title><img src="assets/img/logo.png"></ion-title>
     </ion-navbar>
@@ -21,7 +21,7 @@
     <div class="container-list">
         <ion-item-group>
             <ion-item-divider>
-                <ion-icon ios="ios-disc-outline" md="md-disc" class="disc"></ion-icon> People with similar intrest</ion-item-divider>
+                <ion-icon ios="ios-disc-outline" md="md-disc" class="disc"></ion-icon> People Near You</ion-item-divider>
             <ion-item>
                 <ion-avatar item-left>
                     <img src="assets/img/download.jpg">
@@ -79,4 +79,17 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
+
+
+<ion-content>
+    <ion-list no-lines>
+        <ion-item *ngFor="let location of locations.data">
+            <ion-avatar item-left>
+                <ion-icon name="pin"></ion-icon>
+            </ion-avatar>
+            <h2>{{location.title}}</h2>
+            <p>{{location.distance}} miles</p>
+        </ion-item>
+    </ion-list>
+</ion-content>

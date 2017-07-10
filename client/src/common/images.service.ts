@@ -15,7 +15,7 @@ export class ImageService {
 
   lastImage: string = null;
   loading: Loading;
-  public constructor(@Inject(APP_CONFIG) private config: IAppConfig, public _toast: toast, public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController) { }
+  public constructor( @Inject(APP_CONFIG) private config: IAppConfig, public _toast: toast, public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController) { }
 
   presentActionSheet() {
     return new Promise((resolve, reject) => {
@@ -117,7 +117,7 @@ export class ImageService {
   }
 
 
-  uploadImage(path , ImageName) {
+  uploadImage(path, ImageName) {
     var url = this.config.apiEndpoint + 'ProfilePicUpload';
     var targetPath = path;
     var filename = ImageName;

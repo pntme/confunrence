@@ -71,10 +71,8 @@ export class LoginPage {
       this.ajax.Post('registration', DataToSave).subscribe((data) => {
         localStorage.setItem('LoginData', JSON.stringify(data));
         this.navCtrl.setRoot(MyProfileComponent)
-        if(data.loginCount == 1)
-            this.appCtrl.getRootNav().push(MyProfileComponent);
-        else
-            this.appCtrl.getRootNav().push(SetInterestComponenet);
+        this.appCtrl.getRootNav().push(MyProfileComponent);
+      
       });
     } else {
       let alert = this.alertCtrl.create({

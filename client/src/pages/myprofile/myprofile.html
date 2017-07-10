@@ -14,9 +14,9 @@
  <!-- <ng2-slim-loading-bar [height]="'4px'" [color]="'#387EF5'"></ng2-slim-loading-bar> -->
 <ion-content>
     <div class="circular">
-        <div class="circularCamButton" (click)="TakeImage()">
+        <!-- <div class="circularCamButton" (click)="TakeImage()">
             <ion-icon ios="ios-camera-outline" md="md-camera"></ion-icon>
-        </div>
+        </div> -->
        <!--  <img [src]="UserPic" class="img-circle"> -->
     <div class="Img-container" [ngStyle]="{'background-image': 'url(' + UserPic + ')'}">
 
@@ -58,12 +58,12 @@
                     company is required
                 </div>
             </md-input-container>
-            <md-input-container>
+           <!--  <md-input-container>
                 <input mdInput placeholder="Event" id="event" [(ngModel)]="model.event" name="event" mdInput #event="ngModel" required>
                 <div [hidden]="event.valid || event.pristine" class="alert alert-danger">
                     Location is required
                 </div>
-            </md-input-container>
+            </md-input-container> -->
             <button ion-button block  [disabled]="!heroForm.form.valid">Save & Go</button>
         </form>
 

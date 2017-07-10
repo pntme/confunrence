@@ -18,7 +18,7 @@ import { FacebookAuth, GoogleAuth } from '@ionic/cloud-angular';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  // rootPage: any = MyProfileComponent;
+  rootPage: any = MyProfileComponent;
   pages: Array<{ title: string, component: any }>;
   constructor(public platform: Platform,
     public appCtrl: App,
@@ -47,7 +47,7 @@ export class MyApp {
         this.nav.setRoot(MyProfileComponent);
       } else {
         this.nav.setRoot(LoginPage);
-      }          
+      }
       StatusBar.styleDefault();
       Splashscreen.hide();
     });

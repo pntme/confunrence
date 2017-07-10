@@ -13,7 +13,7 @@ import { toast } from './toast.service';
 
 export class AjaxService {
   public constructor(public _toast: toast, private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) { }
-  Get(api) {
+  Get(api, decide) {
     return this.http.get(api)
       .map(res => res.json())
       .catch(err => {
@@ -24,9 +24,20 @@ export class AjaxService {
   }
 
   Post(api, data) {
-    let url = this.config.apiEndpoint + api;
+    let DataToSend = data;
+    let url;
+    let body;
+    if (DataToSend.phpserver) {
+      url = this.config.phpEndpoint + api;
+      body = 'data=' + JSON.stringify(data);
+
+    }
+    else {
+      url = this.config.apiEndpoint + api;
+
+      body = JSON.stringify(data);
+    }
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    let body = JSON.stringify(data);
     console.log(body);
     return this.http.post(url, data, headers)
       .map(res => res.json())

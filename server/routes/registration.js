@@ -93,7 +93,6 @@ router.route('/SetProfile').post(function(req, res) {
         } else {
             user.location = req.body.location;
             user.company = req.body.company;
-            user._event = req.body.event
             user.save(function(err) {
                 if (err) {
                     res.json(err);
@@ -104,6 +103,8 @@ router.route('/SetProfile').post(function(req, res) {
         }
     });
 });
+
+
 
 
 module.exports = router;

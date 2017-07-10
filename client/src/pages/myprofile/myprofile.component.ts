@@ -44,10 +44,7 @@ export class MyProfileComponent {
   }
 
   ionViewWillEnter() {
-    this.ajax.Get('a.json').subscribe((data) => {
-      this.interest = data;
-    });
-    // this.GetLocation();
+    this.GetLocation();
     this.UserData = localStorage.getItem("LoginData");
     this.model = new MyProfileFormData(JSON.parse(this.UserData)[0].userName, "", JSON.parse(this.UserData)[0].company, JSON.parse(this.UserData)[0]._event);
     this.UserPic = JSON.parse(this.UserData)[0].UserPic;
@@ -62,66 +59,28 @@ export class MyProfileComponent {
       }
     });
   }
- 
 
-  filter(event: any) {
-    if (this.query !== "") {
-      this.filteredList = this.interest.filter(function(el) {
-        return el.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
-      }.bind(this));
-      if (event.code == "ArrowDown" && this.selectedIdx < this.filteredList.length) {
-        this.selectedIdx++;
-      } else if (event.code == "ArrowUp" && this.selectedIdx > 0) {
-        this.selectedIdx--;
-      }
-    } else {
-      this.filteredList = [];
-    }
-  }
 
-  select(item) {
-    this.selected.push(item);
-    this.query = '';
-    this.filteredList = [];
-  }
-  remove(item) {
-    this.selected.splice(this.selected.indexOf(item), 1);
-  }
-
-  handleClick(event) {
-    var clickedComponent = event.target;
-    var inside = false;
-    do {
-      if (clickedComponent === this.elementRef.nativeElement) {
-        inside = true;
-      }
-      clickedComponent = clickedComponent.parentNode;
-    } while (clickedComponent);
-    if (!inside) {
-      this.filteredList = [];
-    }
-    this.selectedIdx = -1;
-  }
   model = new MyProfileFormData("", "", "", "");
   submitted = false;
   onSubmit(empForm: any, event: Event) {
     event.preventDefault();
     this.HLoading.start();
     let DataToSend = {
+      'phpserver': true,
       '_id': JSON.parse(this.UserData)[0]._id,
       'location': {
-        // 'lat': this.latLng.coords.latitude,
-        // 'lng': this.latLng.coords.longitude
+        'lat': this.latLng.coords.latitude,
+        'lng': this.latLng.coords.longitude,
+        'address': this.model.location
       },
       'company': this.model.company,
       'event': this.model.event
 
     }
     //   // this.submitted = true;
-    this.ajax.Post('registration/SetProfile', DataToSend).subscribe((data) => {
-      let arr = [];
-      arr.push(data)
-      localStorage.setItem('LoginData', JSON.stringify(arr));
+    this.ajax.Get('http://truecvs.com/confunrence/setprofile.php?_id='+ JSON.parse(this.UserData)[0]._id+'&lat='+this.latLng.coords.latitude+'&lng='+ this.latLng.coords.longitude + '&company='+this.model.company + '&location='+ this.model.location, 'phpserver').subscribe((data) => {
+      localStorage.setItem('ProfileData', JSON.stringify(DataToSend));
       this.appCtrl.getRootNav().push(SetInterestComponenet);
       this.HLoading.stop();
 

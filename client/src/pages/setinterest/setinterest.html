@@ -1,6 +1,22 @@
-<ion-content>
+<ion-content padding>
     <ion-item>
         <ion-label color="primary" stacked>Add your Interests</ion-label>
-        <ion-input type="email" placeholder="Interests"></ion-input>
+        <ion-input type="text" [(ngModel)]=query (keyup)=filter($event) id="country" placeholder="Interests"></ion-input>
     </ion-item>
+    <div class="suggestions" *ngIf="filteredList.length > 0">
+        <ul *ngFor="let item of filteredList; let idx = index">
+            <li [class.complete-selected]=" idx == selectedIdx">
+                <a (click)="select(item)">{{item}}</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngFor="let item of selected" style="margin-top: 20px;">
+        <div class="selected">
+            <span>{{item}}</span>
+            <a (click)="remove(item)">x</a>
+        </div>
+    </div>
+    <div style="position: absolute;width: 88%;left: 7%;bottom: 13px;">
+        <button ion-button block (click)="SaveInterest()">Save & Go</button>
+    </div>
 </ion-content>
