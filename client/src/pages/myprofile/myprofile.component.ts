@@ -52,10 +52,11 @@ export class MyProfileComponent {
 
   GetLocation() {
     this.subscription = this.myLocation.CheckForGps().subscribe(data => {
-      console.log(data)
+      localStorage.setItem('MyLocation', JSON.stringify(data));
       if (data) {
         this.model.location = data.Result[0].formatted_address;
         this.latLng = data.Position;
+        // localStorage.setItem('MyLocation', JSON.stringify(data));
       }
     });
   }
@@ -75,16 +76,24 @@ export class MyProfileComponent {
         'address': this.model.location
       },
       'company': this.model.company,
-      'event': this.model.event
+      'event': this.model.event,
+      'profilePic': this.UserPic
 
     }
     //   // this.submitted = true;
-    this.ajax.Get('http://truecvs.com/confunrence/setprofile.php?_id='+ JSON.parse(this.UserData)[0]._id+'&lat='+this.latLng.coords.latitude+'&lng='+ this.latLng.coords.longitude + '&company='+this.model.company + '&location='+ this.model.location, 'phpserver').subscribe((data) => {
-      localStorage.setItem('ProfileData', JSON.stringify(DataToSend));
-      this.appCtrl.getRootNav().push(SetInterestComponenet);
-      this.HLoading.stop();
+    this.ajax.Get('http://truecvs.com/confunrence/setprofile.php?_id='
+      + JSON.parse(this.UserData)[0]._id
+      + '&lat=' + this.latLng.coords.latitude
+      + '&lng=' + this.latLng.coords.longitude
+      + '&company=' + this.model.company
+      + '&location=' + this.model.location
+      + '&user_name=' + JSON.parse(this.UserData)[0].userName
+      + '&profile_picture=' + this.UserPic, 'phpserver').subscribe((data) => {
+        localStorage.setItem('ProfileData', JSON.stringify(DataToSend));
+        this.appCtrl.getRootNav().push(SetInterestComponenet);
+        this.HLoading.stop();
 
-    });
+      });
   }
 
 

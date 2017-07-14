@@ -72,7 +72,7 @@ export class LoginPage {
         localStorage.setItem('LoginData', JSON.stringify(data));
         this.navCtrl.setRoot(MyProfileComponent)
         this.appCtrl.getRootNav().push(MyProfileComponent);
-      
+
       });
     } else {
       let alert = this.alertCtrl.create({

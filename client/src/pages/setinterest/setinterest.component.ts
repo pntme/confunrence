@@ -95,7 +95,7 @@ export class SetInterestComponenet {
 
   SaveInterest() {
     localStorage.setItem('Interest', this.selected.toString());
-    this.ajax.Get('http://truecvs.com/confunrence/interest.php?interest=' + JSON.stringify(this.selected) + '&user_id=' + JSON.parse(localStorage.getItem('LoginData'))[0]._id, 'phpServer').subscribe((data) => {
+    this.ajax.Get('http://truecvs.com/confunrence/interest.php?interest=' + this.selected.toString() + '&user_id=' + JSON.parse(localStorage.getItem('LoginData'))[0]._id, 'phpServer').subscribe((data) => {
       console.log(data)
       this.appCtrl.getRootNav().push(InvitationPage);
       // localStorage.setItem('LoginData', JSON.stringify(arr));

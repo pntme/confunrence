@@ -26,6 +26,9 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { ImageService } from '../common/images.service';
 import { SetInterestComponenet } from '../pages/setinterest/setinterest.component';
+import { CreateEvent } from '../pages/create-event/createevent.component';
+import { SelectUser } from '../pages/create-event/selectuser';
+
 
 import 'hammerjs';
 
@@ -57,7 +60,9 @@ const cloudSettings: CloudSettings = {
     NearbyPage,
     InvitationPage,
     ProfileComponent,
-    SetInterestComponenet
+    SetInterestComponenet,
+    CreateEvent,
+    SelectUser
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -80,7 +85,9 @@ const cloudSettings: CloudSettings = {
     NearbyPage,
     InvitationPage,
     ProfileComponent,
-    SetInterestComponenet
+    SetInterestComponenet,
+    CreateEvent,
+    SelectUser
   ],
   providers: [
     toast,

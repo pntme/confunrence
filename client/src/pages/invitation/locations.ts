@@ -11,7 +11,7 @@ export class Locations {
 
   }
 
-  load() {
+  load(currentLocation) {
 
     if (this.data) {
       return Promise.resolve(this.data);
@@ -19,14 +19,16 @@ export class Locations {
 
     return new Promise(resolve => {
 
-      this.http.get('assets/data/locations.json').map(res => res.json()).subscribe(data => {
+      this.http.get('http://truecvs.com/confunrence/nearby.php').map(res => res.json()).subscribe(data => {
 
-        this.data = this.applyHaversine(data.locations);
+        this.data = this.applyHaversine(data, currentLocation);
 
         this.data.sort((locationA, locationB) => {
           return locationA.distance - locationB.distance;
         });
 
+
+        console.log(data)
         resolve(this.data);
       });
 
@@ -34,18 +36,18 @@ export class Locations {
 
   }
 
-  applyHaversine(locations) {
-
+  applyHaversine(locations, currentLocation) {
+    console.log(currentLocation)
     let usersLocation = {
-      lat: 40.713744,
-      lng: -74.009056
+      lat: currentLocation.latitude,
+      lng: currentLocation.longitude
     };
 
     locations.map((location) => {
 
       let placeLocation = {
-        lat: location.latitude,
-        lng: location.longitude
+        lat: location.lat,
+        lng: location.lng
       };
 
       location.distance = this.getDistanceBetweenPoints(
@@ -56,6 +58,7 @@ export class Locations {
     });
 
     return locations;
+
   }
 
   getDistanceBetweenPoints(start, end, units) {

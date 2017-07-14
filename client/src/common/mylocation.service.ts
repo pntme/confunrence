@@ -21,6 +21,7 @@ export class MyLocation {
               Position: position,
               Result: results
             }
+            console.log(ToReturn)
             observer.next(ToReturn);
           });
         }, (error) => {
@@ -46,6 +47,7 @@ export class MyLocation {
   CheckForGps() {
     return Observable.create(observer => {
       this.Get().subscribe(data => {
+        // localStorage.setItem('MyLocation', JSON.stringify(data))
         observer.next(data);
       }, error => {
         this._toast.notify(error, 3000, 'bottom', false, '');

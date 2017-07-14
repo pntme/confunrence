@@ -23,7 +23,7 @@
             <button menuClose ion-item (click)="openPage(pages[4].component)">
                 <ion-icon ios="ios-wifi" md="ios-wifi"></ion-icon>&nbsp; &nbsp; &nbsp;Near by
             </button>
-           <!--  <button menuClose ion-item (click)="openPage(pages[2].component)">
+            <!--  <button menuClose ion-item (click)="openPage(pages[2].component)">
                 <ion-icon ios="ios-person" md="ios-person"></ion-icon>&nbsp; &nbsp; &nbsp; Profile
             </button> -->
             <button menuClose ion-item class="invitation" (click)="openPage(pages[3].component)">
@@ -39,5 +39,8 @@
         </ion-list>
     </ion-content>
 </ion-menu>
+<!-- <ion-fab style="bottom: 79px;right:32px;">
+    <button ion-fab> <ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+</ion-fab> -->
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

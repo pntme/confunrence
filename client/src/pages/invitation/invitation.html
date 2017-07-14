@@ -1,11 +1,9 @@
-<!-- <ion-header>
+<ion-header>
     <ion-navbar color="Orange">
         <ion-title><img src="assets/img/logo.png"></ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
-
-
     <ion-grid>
         <ion-row>
             <ion-col col-10>
@@ -16,73 +14,44 @@
                 <ion-badge color="Orange" class="notificationbadge">4</ion-badge>
             </ion-col>
         </ion-row>
-
     </ion-grid>
     <div class="container-list">
         <ion-item-group>
             <ion-item-divider>
                 <ion-icon ios="ios-disc-outline" md="md-disc" class="disc"></ion-icon> People Near You</ion-item-divider>
-            <ion-item>
+            <ion-item *ngFor="let location of locations.data" (click)="userSelcted(location)">
                 <ion-avatar item-left>
-                    <img src="assets/img/download.jpg">
+                    <img [src]="location.profile_picture">
                 </ion-avatar>
-                <h2><b>Finn</b></h2>
-                <h3>
+                <h2><b>{{location.user_name}}</b></h2>
+                <!--    <h3>
                     <ion-icon ios="ios-star" md="md-star" class="star"></ion-icon>
                     <ion-icon ios="ios-star" md="md-star" class="star"></ion-icon>
                     <ion-icon ios="ios-star" md="md-star" class="star"></ion-icon>
                     <ion-icon ios="ios-star" md="md-star" class="star"></ion-icon>
                     <ion-icon ios="ios-star" md="md-star" class="star"></ion-icon>
-                </h3>
+                </h3> -->
                 <h3 class="text1">
-                    <ion-icon ios="ios-pin" md="md-pin"></ion-icon> Don't Know What To Do! </h3>
+                    <ion-icon ios="ios-pin" md="md-pin"></ion-icon> {{location.distance}} Miles from you</h3>
                 <p class="text1">
-                    <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon> I've had a pretty messed up day. If we just...</p>
-            </ion-item>
-              <ion-item>
-                <ion-avatar item-left>
-                    <img src="assets/img/download.jpg">
-                </ion-avatar>
-                <h2><b>Finn</b></h2>
-                <h3>
-                    <ion-icon ios="ios-star" md="md-star" class="star">
-                    </ion-icon>
-                    <ion-icon ios="ios-star" md="md-star" class="star">
-                    </ion-icon>
-                    <ion-icon ios="ios-star" md="md-star" class="star">
-                    </ion-icon>
-                    <ion-icon ios="ios-star" md="md-star" class="star">
-                    </ion-icon>
-                    <ion-icon ios="ios-star" md="md-star" class="star">
-                    </ion-icon>
-                </h3>
-                <h3 class="text1">
-                    <ion-icon ios="ios-pin" md="md-pin">
-                    </ion-icon> Don't Know What To Do! </h3>
-                <p class="text1">
-                    <ion-icon ios="ios-thumbs-up" md="md-thumbs-up">
-                    </ion-icon> I've had a pretty messed up day. If we just...</p>
+                    <ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon> {{location.company}}</p>
             </ion-item>
         </ion-item-group>
-       <button ion-button class="button">View More</button>
     </div>
-
 </ion-content>
 <ion-footer>
-  <ion-toolbar color="darkblue">
-      <ion-segment  color="default">
-      <ion-segment-button value="camera">
-       VIEW INVITATAION
-      </ion-segment-button>
-      <ion-segment-button value="bookmark">
-      Event List
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-footer> -->
-
-
-<ion-content>
+    <ion-toolbar color="darkblue">
+        <ion-segment color="default">
+            <ion-segment-button value="camera">
+                VIEW INVITATAION
+            </ion-segment-button>
+            <ion-segment-button value="bookmark">
+                Event List
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-footer>
+<!-- <ion-content>
     <ion-list no-lines>
         <ion-item *ngFor="let location of locations.data">
             <ion-avatar item-left>
@@ -92,4 +61,4 @@
             <p>{{location.distance}} miles</p>
         </ion-item>
     </ion-list>
-</ion-content>
+</ion-content> -->

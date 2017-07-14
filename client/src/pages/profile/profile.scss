@@ -1,64 +1,77 @@
-Profile{
-	
-}
-ion-searchbar
-{
-	
-	margin-top:-10px;
+Profile {}
 
+ion-searchbar {
+    margin-top: -10px;
 }
-.notificationicon
-{
-	display: inline-block;
+
+.notificationicon {
+    display: inline-block;
     font-size: 2.2em;
-    margin-top:6px;
-    opacity:.5;
+    margin-top: 6px;
+    opacity: .5;
 }
-.notificationbadge
-{
-	position: absolute;
+
+.notificationbadge {
+    position: absolute;
     top: 3px;
     border-radius: 81px;
     left: 19px;
 }
-.image2
-{
-	
-	width:100%;
-}
-.name2
-{
-    position: absolute;
-    top: 195px;
+
+.image2 {
     width: 100%;
-    left: 112px;
-    z-index: 999;
-}
-.profileImg1
-{
-	max-width: 100%;
-    border-radius: 232px;
-    width: 109px;
-    height: 109px;
-    border: 1px solid blue;
-}
-.profiletext
-{
-	    text-align: center;
-}
-.button1
-{
-    text-transform: none;
-    position: absolute;
-    top: 414px;
-    left: 70px;
-    width: 50%;
+    height: 216px;
+    margin: 0 auto;
+    display: block;
 }
 
-@media (min-width:300px) and (max-width:340px){
-    
-    .profiletext
-    {
-    padding:10px;
+.name2 {
+    top: 195px;
+    width: 100%;
+    z-index: 999;
+    background: #f87e58;
+}
+
+.profileImg1 {
+    max-width: 100%;
+    border-radius: 232px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;
+    margin: 0 auto;
+    display: block;
+    top: 35px;
+    position: relative;
+    z-index: 999;
+}
+
+label label-md{
+    white-space: normal;
+}
+
+.profiletext {
+    text-align: center;
+}
+
+.button1 {
+    text-transform: none;
+    /* position: absolute; */
+    /* top: 414px; */
+    /* left: 70px; */
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+image2Container {
+    width: 100%;
+    height: 216px;
+}
+
+@media (min-width:300px) and (max-width:340px) {
+    .profiletext {
+        padding: 10px;
     }
 }
+
+

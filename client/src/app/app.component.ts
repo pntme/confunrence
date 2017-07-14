@@ -10,6 +10,8 @@ import { InvitationPage } from '../pages/invitation/invitation.component';
 import { NearbyPage } from '../pages/nearby/nearby.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { FacebookAuth, GoogleAuth } from '@ionic/cloud-angular';
+import { CreateEvent } from '../pages/create-event/createevent.component';
+
 
 
 @Component({
@@ -35,7 +37,8 @@ export class MyApp {
       { title: 'MyProfileComponent', component: MyProfileComponent },
       { title: 'InvitationPage', component: InvitationPage },
       { title: 'Near by', component: NearbyPage },
-      { title: 'ProfileComponent', component: ProfileComponent }
+      { title: 'ProfileComponent', component: ProfileComponent },
+      { title: 'CreateEvent', component: CreateEvent }
     ];
     this.initializeApp();
   }
@@ -44,7 +47,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       let AuthData: Object = localStorage.getItem("LoginData");
       if (AuthData) {
-        this.nav.setRoot(MyProfileComponent);
+        this.nav.setRoot(CreateEvent);
       } else {
         this.nav.setRoot(LoginPage);
       }
